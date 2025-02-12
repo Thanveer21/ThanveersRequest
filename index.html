@@ -76,18 +76,20 @@ function finalResponse(accepted) {
 
     response.innerHTML = `<p>${message}</p>`;
 
-    // Generate WhatsApp message
+    // Generate WhatsApp auto-open link
     let userMessage = accepted
         ? "OMG YES! I'm your Valentine! ❤️"
         : "Umm... I need to think about this. 🤔";
 
-    let phoneNumber = "+916301052834"; // Replace with your WhatsApp number
+    let phoneNumber = "YOUR_PHONE_NUMBER"; // Replace with your WhatsApp number
     let whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(userMessage)}`;
 
-    response.innerHTML += `<br><a href="${whatsappLink}" target="_blank">
-                              <button>Send Response on WhatsApp 📩</button>
-                           </a>`;
+    // Auto-open WhatsApp chat
+    setTimeout(() => {
+        window.location.href = whatsappLink;
+    }, 2000); // 2-second delay before redirecting
 }
+
 
 
     </script>
