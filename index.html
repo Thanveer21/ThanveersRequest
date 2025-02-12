@@ -39,13 +39,13 @@ button:hover {
 </head>
 <body>
     <div id="container">
-        <h2 id="message">Hey Shiny, I have something special for you! 💌</h2>
+        <h2 id="message">Hey Shiny, here is something I wanted to ask from a long time, but situations never where in my favour!!</h2>
         <button onclick="nextStep(1)">What is it? 🤔</button>
         <div id="response"></div>
     </div>
 
     <script>
-        function nextStep(step) {
+       function nextStep(step) {
     let response = document.getElementById("response");
 
     if (step === 1) {
@@ -62,7 +62,7 @@ button:hover {
         response.innerHTML = `<p>Haha, stop teasing me! You know we have. 😜</p>
                               <button onclick="nextStep(3)">Fine, we have! 😂</button>`;
     } else if (step === 5) {
-        response.innerHTML = `<p>Will you like to go on a date with me this Valentie? 💖</p>
+        response.innerHTML = `<p>Will you be my Valentine? 💖</p>
                               <button onclick="finalResponse(true)">YES! 🥰</button>
                               <button onclick="finalResponse(false)">Umm... 🤔</button>`;
     }
@@ -70,12 +70,25 @@ button:hover {
 
 function finalResponse(accepted) {
     let response = document.getElementById("response");
-    if (accepted) {
-        response.innerHTML = `<p>YAY! 🎉 I knew you'd say yes! Can't wait! 💃🕺</p>`;
-    } else {
-        response.innerHTML = `<p>Oh no! 😢 Well, I'll still get you chocolate! 🍫</p>`;
-    }
+    let message = accepted
+        ? "YAY! 🎉 I knew you'd say yes! Can't wait! 💃🕺"
+        : "Oh no! 😢 Well, I'll still get you chocolate! 🍫";
+
+    response.innerHTML = `<p>${message}</p>`;
+
+    // Generate WhatsApp message
+    let userMessage = accepted
+        ? "OMG YES! I'm your Valentine! ❤️"
+        : "Umm... I need to think about this. 🤔";
+
+    let phoneNumber = "YOUR_PHONE_NUMBER"; // Replace with your WhatsApp number
+    let whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(userMessage)}`;
+
+    response.innerHTML += `<br><a href="${whatsappLink}" target="_blank">
+                              <button>Send Response on WhatsApp 📩</button>
+                           </a>`;
 }
+
 
     </script>
 </body>
